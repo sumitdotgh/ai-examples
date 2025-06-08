@@ -1,7 +1,7 @@
 [project]
 name = "basic-agent"
 version = "0.1.0"
-description = ""
+description = "Basic agent with langchain"
 authors = [
     {name = "Sumit Ghosh"}
 ]
