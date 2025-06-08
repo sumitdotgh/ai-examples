@@ -1,5 +1,6 @@
-# ai-examples
-AI Examples
+# :brain: ai-examples
+
+A curated collection of practical AI and LLM examples using LangChain,OpenAI, Azure OpenAI, and LangGraph. This repository demonstrates how to build intelligent agents, integrate custom tools, work with APIs, and run local models like Mistral using Ollama.
 
 ## List of examples
 
