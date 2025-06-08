@@ -4,11 +4,12 @@ A curated collection of practical AI and LLM examples using LangChain,OpenAI, Az
 
 ## List of examples
 
-| Name                      | Description            
---------------------------------------------------------------------------------------
-| Local LLM                 | Run local LLM using ollama
-| basic-agent               | Basic calculation agent using langchain and tool.
-| basic-agent-langgraph     | Basic calculation agent using langgraph, structured tool and logging.
+| Name                    | Description                                                        |
+|-------------------------|--------------------------------------------------------------------|
+| Local LLM               | Run local LLM using Ollama                                         |
+| basic-agent             | Basic calculation agent using LangChain and tool                   |
+| basic-agent-langgraph   | Basic calculation agent using LangGraph, structured tool, and logging |
+
 
 ## Clean up script
 
