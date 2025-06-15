@@ -1,6 +1,5 @@
 from pydantic import BaseModel, Field
 
-class WeatherResponse(BaseModel):
+class Weather(BaseModel):
     city: str
-    temperature: str
-    description: str
+    temp: str    
