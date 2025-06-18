@@ -9,15 +9,15 @@ from a2a.types import (
     AgentSkill,
     AgentCapabilities
 )
-from .agent_executor import (
+from agent_executor import (
     WeatherAgentExecutor
 )
 
-async def main() -> None:
+def main():
     
     skill = AgentSkill(
         id='weather_agent',
-        name='Weather specific information',
+        name='Weather Agent',
         description='Share weather specific information',
         tags=['weather info'],
         examples=['What is the weather of blr?'],
@@ -49,4 +49,4 @@ async def main() -> None:
 
 if __name__ == '__main__':
 
-    asyncio.run(main())
+    main()

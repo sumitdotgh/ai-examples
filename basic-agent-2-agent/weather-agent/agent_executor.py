@@ -1,3 +1,4 @@
+import json
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
 from a2a.utils import new_agent_text_message
@@ -6,9 +7,9 @@ from a2a.utils import new_agent_text_message
 class WeatherAgent:
     """Hello World Agent."""
 
-    async def invoke(self) -> str:
+    async def invoke(self) -> dict:
         """Method to invoke actual business logic information"""
-        return 'Hello World'
+        return {"city": "BLR", "temp":"10c"}
 
 class WeatherAgentExecutor(AgentExecutor):
     """Test AgentProxy Implementation."""
@@ -22,7 +23,7 @@ class WeatherAgentExecutor(AgentExecutor):
         event_queue: EventQueue,
     ) -> None:
         result = await self.agent.invoke()
-        await event_queue.enqueue_event(new_agent_text_message(result))
+        await event_queue.enqueue_event(new_agent_text_message(json.dumps(result)))
     
     async def cancel(
         self, context: RequestContext, event_queue: EventQueue
