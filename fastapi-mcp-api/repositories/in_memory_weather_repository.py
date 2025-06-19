@@ -3,6 +3,7 @@ from typing import List
 from .weather_repository import WeatherRepository
 from models import Weather
 
+
 class InMemoryWeatherRepository(WeatherRepository):
     __weathers = {}
 
@@ -13,11 +14,9 @@ class InMemoryWeatherRepository(WeatherRepository):
 
         return self.__weathers[city]
 
-    def add(self, weather: Weather) -> Weather:        
-        self.__weathers[weather.city] =  weather
+    def add(self, weather: Weather) -> Weather:
+        self.__weathers[weather.city] = weather
         return weather
-    
+
     def get_all(self) -> List[Weather]:
         return list(self.__weathers.values())
-          
-        

@@ -9,7 +9,8 @@ class WeatherAgent:
 
     async def invoke(self) -> dict:
         """Method to invoke actual business logic information"""
-        return {"city": "BLR", "temp":"10c"}
+        return {"city": "BLR", "temp": "10c"}
+
 
 class WeatherAgentExecutor(AgentExecutor):
     """Test AgentProxy Implementation."""
@@ -24,8 +25,6 @@ class WeatherAgentExecutor(AgentExecutor):
     ) -> None:
         result = await self.agent.invoke()
         await event_queue.enqueue_event(new_agent_text_message(json.dumps(result)))
-    
-    async def cancel(
-        self, context: RequestContext, event_queue: EventQueue
-    ) -> None:
-        raise Exception('cancel not supported')
+
+    async def cancel(self, context: RequestContext, event_queue: EventQueue) -> None:
+        raise Exception("cancel not supported")

@@ -15,35 +15,37 @@ endpoint = "https://models.github.ai/inference"
 model = "openai/gpt-4.1"
 secret = SecretStr(token)
 
-llm = ChatOpenAI(
-    base_url=endpoint,
-    api_key=secret,
-    model=model
-)
+llm = ChatOpenAI(base_url=endpoint, api_key=secret, model=model)
+
 
 # setup the tools
 @tool
 def add(a: int, b: int) -> int:
-    """Add two numbers."""    
+    """Add two numbers."""
     print("In add")
     return a + b
+
 
 @tool
 def subtract(a: int, b: int) -> int:
     """Subtract two numbers."""
     print("In subtract")
     return a - b
- 
+
+
 prompt = ChatPromptTemplate.from_messages(
     [
-        ("system", """You are a calculation assistant.
+        (
+            "system",
+            """You are a calculation assistant.
         Use your tools to correct calculation. If you do not have a tool to
         provide the right result, then mention that you don't have supported tools. 
 
         Return only the answer. e.g
         Human: What is 2 + 2?
         AI: 4
-        """),
+        """,
+        ),
         MessagesPlaceholder("chat_history", optional=True),
         ("human", "{input}"),
         MessagesPlaceholder("agent_scratchpad"),
@@ -62,4 +64,4 @@ agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 query = "What is the result of subtracting 3 from 10?"
 result = agent_executor.invoke({"input": query})
 
-print(result['output'])
+print(result["output"])
