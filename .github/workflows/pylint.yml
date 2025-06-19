@@ -34,5 +34,5 @@ jobs:
       working-directory: ${{ matrix.project }} 
 
     - name: Run pylint
-      run: poetry run pylint        
+      run: pylint $(git ls-files '*.py')     
       working-directory: ${{ matrix.project }} 
