@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        project:
+          - ai-examples/fast-mcp-api
         python-version: ["3.12"]
     steps:
     - uses: actions/checkout@v4
@@ -14,10 +16,18 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+    - name: Configure Poetry (if needed)
+      run: poetry config virtualenvs.in-project true
+
     - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pylint
-    - name: Analysing the code with pylint
-      run: |
-        pylint $(git ls-files '*.py')
+      run: poetry install
+      working-directory: ${{ matrix.project }} 
+
+    - name: Run pylint
+      run: poetry run pylint        
+      working-directory: ${{ matrix.project }} 
