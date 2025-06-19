@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fastapi_mcp import FastApiMCP
+from fastapi_mcp import FastApiMCP # pylint: disable=import-error
 from routes import weather
 
 app = FastAPI()
