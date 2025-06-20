@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         project:
-          - fastapi-mcp-api
+          - basic-agent
         python-version: ["3.12"]
     steps:
     - uses: actions/checkout@v4
