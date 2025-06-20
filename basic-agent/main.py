@@ -5,9 +5,9 @@ from dotenv import load_dotenv
 from pydantic import SecretStr
 
 from langchain.agents import AgentExecutor, create_openai_tools_agent
-from langchain_openai import ChatOpenAI
 from langchain.tools import tool
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_openai import ChatOpenAI
 
 load_dotenv()
 
