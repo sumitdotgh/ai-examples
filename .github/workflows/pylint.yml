@@ -1,0 +1,38 @@
+name: Pylint
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project:
+          - basic-agent
+        python-version: ["3.12"]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+    - name: Configure Poetry (if needed)
+      run: poetry config virtualenvs.in-project true
+    
+    - name: Show folder tree
+      run: |
+        pwd
+        tree -L 2 || ls -R
+      
+    - name: Install dependencies
+      run: poetry install
+      working-directory: ${{ matrix.project }} 
+
+    - name: Run pylint
+      run: poetry run pylint $(git ls-files '*.py')     
+      working-directory: ${{ matrix.project }} 
