@@ -1,21 +1,22 @@
+"""Basic agent"""
+
 import os
 from dotenv import load_dotenv
 from pydantic import SecretStr
 
 from langchain.agents import AgentExecutor, create_openai_tools_agent
 from langchain_openai import ChatOpenAI
-
 from langchain.tools import tool
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 load_dotenv()
 
-token = os.environ["GITHUB_TOKEN"]
-endpoint = "https://models.github.ai/inference"
-model = "openai/gpt-4.1"
-secret = SecretStr(token)
+TOKEN = os.environ["GITHUB_TOKEN"]
+ENDPOINT = "https://models.github.ai/inference"
+MODEL = "openai/gpt-4.1"
+secret = SecretStr(TOKEN)
 
-llm = ChatOpenAI(base_url=endpoint, api_key=secret, model=model)
+llm = ChatOpenAI(base_url=ENDPOINT, api_key=secret, model=MODEL)
 
 
 # setup the tools
@@ -61,7 +62,7 @@ agent = create_openai_tools_agent(llm, tools, prompt)
 # Create an agent executor by passing in the agent and tools
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 
-query = "What is the result of subtracting 3 from 10?"
-result = agent_executor.invoke({"input": query})
+QUERY = "What is the result of subtracting 3 from 10?"
+result = agent_executor.invoke({"input": QUERY})
 
 print(result["output"])
