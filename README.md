@@ -17,3 +17,7 @@ A curated collection of practical AI and LLM examples using LangChain,OpenAI, Az
 | test-mcp-client         | Added a basic test MCP client   |
 | basic-agent-2-agent     | Added a basic sample using A2A protocol |
 
+
+#### 📎 Credits
+
+> Some images or sample data used in this project were found on the internet and are assumed to be in the public domain or used under fair use for non-commercial purposes.
