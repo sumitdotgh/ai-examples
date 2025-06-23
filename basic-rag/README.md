@@ -1,5 +1,9 @@
 # Basic Rag application
 
+A simple app shows the basic capability of RAG system.
+
+You should follow the below steps to run the application:
+
 ## Step 1: Load the data
 
 - Navigate to the `basic-rag` directory.
