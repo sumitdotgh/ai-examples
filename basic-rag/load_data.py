@@ -11,30 +11,30 @@ from langchain_chroma import Chroma
 load_dotenv()
 
 # Azure AI Inference configuration
-ENDPOINT = "https://models.inference.ai.azure.com"
-MODEL_NAME = "text-embedding-3-large"
-TOKEN = os.environ["GITHUB_TOKEN"]  # Use your actual GitHub Marketplace token
+AZURE_AI_INFERENCE_ENDPOINT = "https://models.inference.ai.azure.com"
+EMBEDDING_MODEL_NAME = "text-embedding-3-large"
+EMBEDDING_MODEL_TOKEN = os.environ["EMBEDDING_MODEL_GITHUB_TOKEN"]  # Use your actual GitHub Marketplace token
 
 # Predefined Path
 DATA_DIR = "./weather_data"
 PERSISTED_DIR = "./chroma_store"
-
+COLLECTION_NAME="WEATHER"
 
 # Initialize Azure Inference client
 client = EmbeddingsClient(
-    endpoint=ENDPOINT,
-    credential=AzureKeyCredential(TOKEN)
+    endpoint=AZURE_AI_INFERENCE_ENDPOINT,
+    credential=AzureKeyCredential(EMBEDDING_MODEL_TOKEN)
 )
 
 
 # Custom wrapper for LangChain embedding interface
 class AzureInferenceOpenAIEmbeddings(Embeddings):
     def embed_documents(self, texts):
-        response = client.embed(input=texts, model=MODEL_NAME)
+        response = client.embed(input=texts, model=EMBEDDING_MODEL_NAME)
         return [item["embedding"] for item in response["data"]]
 
     def embed_query(self, text):
-        response = client.embed(input=[text], model=MODEL_NAME)
+        response = client.embed(input=[text], model=EMBEDDING_MODEL_NAME)
         return response["data"][0]["embedding"] # type: ignore[attr-defined]
 
 # Load all .txt files from a folder
@@ -69,6 +69,7 @@ def load_data_to_vector_store():
 
     # Store in Chroma
     vector_store : Chroma = Chroma.from_documents(
+        collection_name=COLLECTION_NAME,
         documents=split_docs,
         embedding=embedding_model,
         persist_directory=PERSISTED_DIR
@@ -85,7 +86,8 @@ def search_data_in_vector_store(query):
     # Reinitialize for search
     vector_store = Chroma(
         persist_directory=PERSISTED_DIR,
-        embedding_function=embedding_model
+        embedding_function=embedding_model,
+        collection_name=COLLECTION_NAME
     )
 
     results = vector_store.similarity_search(query, k=1)
