@@ -9,6 +9,7 @@ jobs:
       matrix:
         project:
           - basic-agent
+          - basic-agent-tracing-langsmith
         python-version: ["3.12"]
     steps:
     - uses: actions/checkout@v4
