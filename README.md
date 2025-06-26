@@ -1,4 +1,4 @@
-![Dev Build](https://github.com/sumitdotgh/ai-examples/actions/workflows/pylint.yml/badge.svg?branch=dev)
+![Dev Build](https://github.com/sumitdotgh/ai-examples/actions/workflows/ci.yml/badge.svg?branch=dev)
 
 
 # :brain: ai-examples
