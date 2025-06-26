@@ -9,8 +9,9 @@ A curated collection of practical AI and LLM examples using LangChain,OpenAI, Az
 
 | Name                    | Description                                                        |
 |-------------------------|--------------------------------------------------------------------|
-| Local LLM               | Run local LLM using Ollama                                         |
-| basic-agent             | Basic calculation agent using LangChain and tool                   |
+| Local LLM                | Run local LLM using Ollama                                         |
+| basic-agent              | Basic calculation agent using LangChain and tool                   |
+| basic-agent-with-tracing | Basic calculation agent with enabled tracing using LangSmith             |
 | basic-rag               | Basic rag system to query weather data of a date range |
 | basic-agent-langgraph   | Basic calculation agent using LangGraph, structured tool, and logging |
 | fastapi-mcp-api         | Basic weather API as MCP server |
