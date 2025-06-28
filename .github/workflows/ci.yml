@@ -1,13 +1,15 @@
 name: Pylint
 
-on: [push]
+on:
+  push:
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project:
+        project:          
           - basic-agent
           - basic-agent-tracing-langsmith
         python-version: ["3.12"]
