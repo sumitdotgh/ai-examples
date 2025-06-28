@@ -9,6 +9,7 @@ A curated collection of practical AI and LLM examples using LangChain,OpenAI, Az
 
 | Name                    | Description                                                        |
 |-------------------------|--------------------------------------------------------------------|
+| Tiny GPT model           | Tiny GPT model for learning Transformer architecture |
 | Local LLM                | Run local LLM using Ollama                                         |
 | basic-agent              | Basic calculation agent using LangChain and tool                   |
 | basic-agent-tracing-langsmith | Basic calculation agent with enabled tracing using LangSmith             |
