@@ -7,17 +7,18 @@ A curated collection of practical AI and LLM examples using LangChain,OpenAI, Az
 
 ## List of examples
 
-| Name                    | Description                                                        |
-|-------------------------|--------------------------------------------------------------------|
-| Tiny GPT model           | Tiny GPT model for learning Transformer architecture |
-| Local LLM                | Run local LLM using Ollama                                         |
-| basic-agent              | Basic calculation agent using LangChain and tool                   |
-| basic-agent-tracing-langsmith | Basic calculation agent with enabled tracing using LangSmith             |
-| basic-rag               | Basic rag system to query weather data of a date range |
+| Project Name             | Description                                                          |
+|--------------------------|----------------------------------------------------------------------|
+| basic-cnn                | Basic CNN model implementation to perform image classification       |
+| tiny-gpt-model           | Tiny GPT model for learning Transformer architecture                 |
+| local-llm                | Run local LLM using Ollama                                           |
+| basic-agent              | Basic calculation agent using LangChain and tool                     |
+| basic-agent-tracing-langsmith | Basic calculation agent with enabled tracing using LangSmith    |
+| basic-rag               | Basic rag system to query weather data of a date range                |
 | basic-agent-langgraph   | Basic calculation agent using LangGraph, structured tool, and logging |
-| fastapi-mcp-api         | Basic weather API as MCP server |
-| test-mcp-client         | Added a basic test MCP client   |
-| basic-agent-2-agent     | Added a basic sample using A2A protocol |
+| fastapi-mcp-api         | Basic weather API as MCP server                                       |
+| test-mcp-client         | Added a basic test MCP client                                         |
+| basic-agent-2-agent     | Added a basic sample using A2A protocol                               |
 
 
 #### 📎 Credits
