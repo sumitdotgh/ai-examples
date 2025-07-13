@@ -5,7 +5,7 @@ import numpy as np
 
 
 def get_rnn_model(vocab_size, seq_length):
-
+    """Return the simple RNN model"""
     model = models.Sequential([
         layers.Embedding(input_dim=vocab_size, output_dim=32, input_length=seq_length),
         layers.SimpleRNN(64, return_sequences=False),
@@ -13,23 +13,17 @@ def get_rnn_model(vocab_size, seq_length):
         layers.Dense(vocab_size, activation='softmax')
     ])
 
-    return model
+    model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    model.summary()
 
-def predict_next(model, tokenizer, text, seq_length=4):
-    token_list = tokenizer.texts_to_sequences([text])[0]
-    token_list = pad_sequences([token_list], maxlen=seq_length, padding='pre')
-    predicted_probs = model.predict(token_list, verbose=0)
-    predicted_id = np.argmax(predicted_probs)
-    for word, index in tokenizer.word_index.items():
-        if index == predicted_id:
-            return word
-    return ""
+    return model
 
 if __name__ == "__main__":
     
     print("************************************************")    
     print("************** Basic RNN ***********************")
 
+    # Define the input corpus.
     corpus = [
         "hello world how are you",
         "how are you doing today",
@@ -56,9 +50,12 @@ if __name__ == "__main__":
 
     vocab_size = len(tokenizer.word_index) + 1
 
-    model = get_rnn_model(vocab_size,seq_length)
-    
-    model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-    model.summary()
+    model = get_rnn_model(vocab_size,seq_length)    
 
+    # Train the model
     model.fit(X, y, epochs=200, verbose=1)
+
+    # Save the model
+    print("----- Save the model weight ---")
+    model.save('char_rnn_model.keras')
+    print("Successfully saved this model!")
