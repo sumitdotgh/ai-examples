@@ -29,9 +29,12 @@ To run this agent, you'll need a GitHub token (used here as a secret key to acce
 
 ## Visual Explaination
 
+```mermaid
 flowchart TD
-    A["🧑 User Query<br/>e.g., 'What is 10 - 3?'"] --> B[AgentExecutor<br/>(LangChain)]
-    B --> C[create_openai_tools_agent()<br/>(LLM + tools + prompt)]
-    C --> D1[🧠 LLM<br/>GPT‑4.1 API (custom endpoint)]
-    C --> D2[🧰 Tools<br/>add(a, b), subtract(a, b)]
-    D1 & D2 --> E[📝 Final Answer<br/>e.g., '7']
+    A["🧑 User Query\ne.g., 'What is 10 - 3?'"] --> B["AgentExecutor\n(LangChain)"]
+    B --> C["create_openai_tools_agent()\n(LLM + tools + prompt)"]
+    C --> D1["🧠 LLM\nGPT-4.1 API (custom endpoint)"]
+    C --> D2["🧰 Tools\nadd(a, b), subtract(a, b)"]
+    D1 & D2 --> E["📝 Final Answer\ne.g., '7'"]
+
+```
