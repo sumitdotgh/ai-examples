@@ -21,7 +21,7 @@ if __name__ == "__main__":
     print("*********** Evaluating the model *****************") 
 
     # 1. Load the model
-    loaded_model = load_model("char_rnn_model.keras")
+    loaded_model = load_model("next_word_prediction_model.keras")
     print(loaded_model)
     
     # Recreate the same tokenizer and corpus used for training

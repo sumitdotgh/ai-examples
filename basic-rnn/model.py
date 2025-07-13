@@ -57,5 +57,5 @@ if __name__ == "__main__":
 
     # Save the model
     print("----- Save the model weight ---")
-    model.save('char_rnn_model.keras')
+    model.save('next_word_prediction_model.keras')
     print("Successfully saved this model!")
