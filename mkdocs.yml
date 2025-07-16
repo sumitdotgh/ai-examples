@@ -1,0 +1,9 @@
+site_name: AI Examples
+nav:
+  - Home: index.md
+  - Basic CNN: basic-cnn.md
+  - Basic RNN: basic-rnn.md  
+  - Basic Agent: basic-agent.md
+  - Basic Agent 2 Agent: basic-agent-2-agent.md
+theme:
+  name: material
