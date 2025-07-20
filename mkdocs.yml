@@ -3,7 +3,13 @@ nav:
   - Home: index.md
   - Basic CNN: basic-cnn.md
   - Basic RNN: basic-rnn.md  
+  - Tiny GPT:  tiny-gpt-model.md
+  - Local LLM: local-llm.md  
   - Basic Agent: basic-agent.md
-  - Basic Agent 2 Agent: basic-agent-2-agent.md
+  - Basic Agent Tracing Langsmith: 
+  - Basic Agent 2 Agent: basic-agent-2-agent.md  
+  - Basic RAG: basic-rag.md
+  - FastAPI MCP Server and Client: fastapi-mcp-api-and-client.md   
+  - Basic Multi Agent Systems: multi-agent-system.md
 theme:
   name: material
