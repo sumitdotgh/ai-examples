@@ -24,6 +24,8 @@ Plan:
 
 
 def planner_agent(state: WeatherState) -> WeatherState:
+    print("[Planner] Generating plan for query:", state.input_query)
+
     # Prepare the prompt
     prompt = PLANNER_PROMPT.format_messages(query=state.input_query)
     

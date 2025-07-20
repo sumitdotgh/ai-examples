@@ -6,6 +6,7 @@ if __name__ == "__main__":
 
     # Initial shared state
     input_state = WeatherState(input_query="What's the weather like in Bangalore?")    
+    #input_state = WeatherState(input_query="What's your age?")    
 
     print("🔁 Running Multi-Agent Weather Graph...")
     final_state = weather_graph.invoke(input_state)
