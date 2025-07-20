@@ -10,9 +10,9 @@ You should follow the below steps to run the application:
 
 - Run the below command to load the data in a vector store.
 
-```shell
-python load_data.py
-```
+    ```shell
+    python load_data.py
+    ```
 
 ## Step 2: Query the LLM model with context
 
