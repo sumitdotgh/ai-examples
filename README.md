@@ -20,6 +20,7 @@ A curated collection of practical AI and LLM examples using Keras,LangChain,Open
 | 🌦️ **fastapi-mcp-api**                | Weather API built using FastAPI as MCP server            |
 | 🔌 **test-mcp-client**                | Basic MCP client for testing interactions                |
 | 🔄 **basic-agent-2-agent**            | Sample using Agent-to-Agent (A2A) communication protocol |
+| 🔄 **basic-multi-agent-system**       | Simple multi-agent architecture using LangGraph          |
 
 ## 🎯 Motivation
 

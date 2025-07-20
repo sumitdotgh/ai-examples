@@ -1,0 +1,23 @@
+[project]
+name = "basic-multi-agent-system"
+version = "0.1.0"
+description = "Multi Agent System"
+authors = [
+    {name = "sumitdotgh",email = "sughos@outlook.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+dependencies = [
+    "langgraph (>=0.5.3,<0.6.0)",
+    "langchain (>=0.3.26,<0.4.0)",
+    "langchain-community (>=0.3.27,<0.4.0)",
+    "langchain-openai (>=0.3.28,<0.4.0)",
+    "python-dotenv (>=1.1.1,<2.0.0)"
+]
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
