@@ -38,4 +38,4 @@ If any of these examples help you learn something new (or spark your own experim
 
 > Portions of the code, architecture ideas, and debugging help were assisted by **ChatGPT**, used as a learning partner and coding assistant throughout the project.
 
-> 💡 Like it? Don't forget to star it! :)
+> 💡 Like it? Don't forget to star ⭐️ it! 😊
