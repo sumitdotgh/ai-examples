@@ -20,6 +20,46 @@ python load_data.py
 python main.py
 ```
 
+## Visual Explaination
+
+```mermaid
+flowchart TD
+
+%% Data Preparation (load_data.py)
+subgraph A[Data Preparation load_data.py]
+    A1["📂 Read .txt Files<br/>from ./weather_data"]:::input
+    A2["✂️ Split Text into Chunks"]:::process
+    A3["🧠 Generate Embeddings<br/>(Azure AI Inference)"]:::embedding
+    A4["💾 Store Embeddings in<br/>Chroma Vector DB"]:::vector
+    A1 --> A2 --> A3 --> A4
+end
+
+%% Query & Retrieval (main.py)
+subgraph B[Query & Retrieval main.py]
+    B1["\❓ User Question Input"]:::input
+    B2["🧠 Embed Query<br/>(Azure AI Inference)"]:::embedding
+    B3["🔍 Search Chroma Vector DB<br/>(Top-k Similarity Search)"]:::vector
+    B4["📄 Retrieve Relevant Chunks"]:::retrieval
+    B5["🧾 Format Context with<br/>PromptTemplate"]:::process
+    B6["🤖 Query GPT-4.1<br/>(GitHub Inference)"]:::llm
+    B7["✅ Return Final Answer<br/>+ Source Docs"]:::output
+    B1 --> B2 --> B3 --> B4 --> B5 --> B6 --> B7
+end
+
+%% Data flow from vector store to retrieval
+A4 --> B3
+
+%% Style Definitions
+classDef input fill:#FFF3E0,stroke:#FB8C00,stroke-width:2px;
+classDef process fill:#E0F7FA,stroke:#00ACC1,stroke-width:2px;
+classDef embedding fill:#FBE9E7,stroke:#FF7043,stroke-width:2px;
+classDef vector fill:#F1F8E9,stroke:#7CB342,stroke-width:2px;
+classDef retrieval fill:#FFFDE7,stroke:#FDD835,stroke-width:2px;
+classDef llm fill:#EDE7F6,stroke:#7E57C2,stroke-width:2px;
+classDef output fill:#E8F5E9,stroke:#43A047,stroke-width:2px;
+
+```
+
 ## Output
 
 ```text
