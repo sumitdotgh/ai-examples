@@ -13,3 +13,11 @@ nav:
   - Basic Multi Agent Systems: multi-agent-system.md
 theme:
   name: material
+  custom_dir: overrides
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js
+  - js/init-mermaid.js
+
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.highlight
