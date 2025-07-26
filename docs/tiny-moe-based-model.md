@@ -17,17 +17,25 @@
 
 - Run the below command to do the model training
 
-```sh
-python model.py
-```
+    ```sh
+    python model.py
+    ```
 
+- This actually saves all the related model specific weights and parameters in disk under `saved_model` directory.
+
+- You would notice there will be primary 3 different files.
+
+    - Actual model architecture with weights.
+    - Tokenizer specification
+    - Max Sequence information used in training.
+ 
 ## Model Prediction
 
 - Run the below command to do the model prediction
 
-```sh
-python serve.py
-```
+    ```sh
+    python serve.py
+    ```
 
 
 ## Visual Explaination
