@@ -12,6 +12,7 @@ A curated collection of practical AI and LLM examples using Keras,LangChain,Open
 | 📷 **basic-cnn**                      | Basic CNN model to perform image classification          |
 | 🔁 **basic-rnn**                      | Simple RNN model to predict next word                    |
 | 🔤 **tiny-gpt-model**                 | Tiny GPT model for learning Transformer architecture     |
+| 🔤 **tiny-moe-based-model**           | Tiny sample model based on MoE architecture for predicting the next word |
 | 🤖 **local-llm**                      | Run local LLM using [Ollama](https://ollama.com)         |
 | 🧮 **basic-agent**                    | Basic calculation agent using LangChain and tool         |
 | 🛰️ **basic-agent-tracing-langsmith**  | Calculation agent with LangSmith tracing enabled         |
@@ -21,6 +22,7 @@ A curated collection of practical AI and LLM examples using Keras,LangChain,Open
 | 🔌 **test-mcp-client**                | Basic MCP client for testing interactions                |
 | 🔄 **basic-agent-2-agent**            | Sample using Agent-to-Agent (A2A) communication protocol |
 | 🗺️ **basic-multi-agent-system**       | Simple multi-agent architecture using LangGraph          |
+
 
 ## 🎯 Motivation
 
@@ -32,11 +34,10 @@ Each project here represents a small “aha!” moment — and a belief that the
 
 If any of these examples help you learn something new (or spark your own experiments), this repo has done its job. 🚀
 
-
-
 #### 📎 Credits
 
 > Some images or sample data used in this project were found on the internet and are assumed to be in the public domain or used under fair use for non-commercial purposes.
 
 > Portions of the code, architecture ideas, and debugging help were assisted by **ChatGPT**, used as a learning partner and coding assistant throughout the project.
 
+> 💡 Like it? Don't forget to star ⭐️ it! 😊
