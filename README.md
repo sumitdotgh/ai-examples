@@ -35,5 +35,7 @@ If any of these examples help you learn something new (or spark your own experim
 ### 📎 Credits
 
 > Some images or sample data used in this project were found on the internet and are assumed to be in the public domain or used under fair use for non-commercial purposes.
+
 > Portions of the code, architecture ideas, and debugging help were assisted by **ChatGPT**, used as a learning partner and coding assistant throughout the project.
+
 > 💡 Like it? Don't forget to star ⭐️ it! 😊
