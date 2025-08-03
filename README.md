@@ -1,6 +1,5 @@
 ![Main Build](https://github.com/sumitdotgh/ai-examples/actions/workflows/ci.yml/badge.svg?branch=main)
 
-
 # :brain: ai-examples
 
 A curated collection of practical AI and LLM examples using Keras,LangChain,OpenAI, Azure OpenAI, and LangGraph. This repository demonstrates how to build intelligent agents, integrate custom tools, work with APIs, and run local models like Mistral using Ollama.
@@ -23,7 +22,6 @@ A curated collection of practical AI and LLM examples using Keras,LangChain,Open
 | 🔄 **basic-agent-2-agent**            | Sample using Agent-to-Agent (A2A) communication protocol |
 | 🗺️ **basic-multi-agent-system**       | Simple multi-agent architecture using LangGraph          |
 
-
 ## 🎯 Motivation
 
 This repository began as a personal learning journey — a place to experiment, break, fix, and deeply understand the core building blocks of AI and modern software systems.
@@ -34,10 +32,8 @@ Each project here represents a small “aha!” moment — and a belief that the
 
 If any of these examples help you learn something new (or spark your own experiments), this repo has done its job. 🚀
 
-#### 📎 Credits
+### 📎 Credits
 
 > Some images or sample data used in this project were found on the internet and are assumed to be in the public domain or used under fair use for non-commercial purposes.
-
 > Portions of the code, architecture ideas, and debugging help were assisted by **ChatGPT**, used as a learning partner and coding assistant throughout the project.
-
 > 💡 Like it? Don't forget to star ⭐️ it! 😊
