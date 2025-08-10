@@ -1,5 +1,7 @@
 ![Main Build](https://github.com/sumitdotgh/ai-examples/actions/workflows/ci.yml/badge.svg?branch=main)
 
+![Docs Build](https://github.com/sumitdotgh/ai-examples/actions/workflows/deploy.yml/badge.svg?branch=dev)
+
 # :brain: ai-examples
 
 A curated collection of practical AI and LLM examples using Keras,LangChain,OpenAI, Azure OpenAI, and LangGraph. This repository demonstrates how to build intelligent agents, integrate custom tools, work with APIs, and run local models like Mistral using Ollama.
