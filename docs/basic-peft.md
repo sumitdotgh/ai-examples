@@ -72,13 +72,13 @@ python model.py
 
 ```mermaid
 flowchart TD
-    A[Start] --> B[Import Libraries & Data (CORPUS)]
+    A[Start] --> B[Import Libraries & Data]
     B --> C[Define LoRALayer class]
     C --> D[Extract texts and labels from CORPUS]
-    D --> E[Create label map (string->int)]
+    D --> E[Create label map string->int]
     E --> F[Convert labels to integers]
     F --> G[Load DistilBERT tokenizer]
-    G --> H[Tokenize texts (max_length=64)]
+    G --> H[Tokenize texts max_length=64]
     H --> I[Convert to int32 tensors]
     I --> J[Create tf.data.Dataset]
     J --> K[Shuffle & Split into train and val sets]
@@ -86,8 +86,8 @@ flowchart TD
     L --> M[Freeze base transformer layers]
     M --> N[Inject LoRA into last 2 transformer layers]
     N --> O[Make classification head trainable]
-    O --> P[Compile model (Adam, CrossEntropy)]
-    P --> Q[Train model (3 epochs)]
+    O --> P[Compile model Adam, CrossEntropy]
+    P --> Q[Train model]
     Q --> R[Check if SAVE_DIR exists -> remove if yes]
     R --> S[Save model & tokenizer]
     S --> T[Save label_map.json]
@@ -98,4 +98,21 @@ flowchart TD
 
 ```sh
 python serve.py
-``
+```
+
+```mermaid
+flowchart TD
+    A[Start] --> B[Load Tokenizer from MODEL_DIR]
+    B --> C[Load label_map.json]
+    C --> D[Invert label_map to inv_label_map]
+    D --> E[Load Trained DistilBERT Model from MODEL_DIR]
+    E --> F[Define predict_single]
+    F --> G[Encode text with tokenizer]
+    G --> H[Convert tensors to int32]
+    H --> I[Run model forward pass]
+    I --> J[Extract logits]
+    J --> K[Apply softmax to get probabilities]
+    K --> L[Find predicted class index]
+    L --> M[Map index to label using inv_label_map]
+    M --> N[Return label and confidence]
+```

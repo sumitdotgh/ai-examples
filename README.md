@@ -21,6 +21,7 @@ A curated collection of practical AI and LLM examples using Keras,LangChain,Open
 | 🔌 **test-mcp-client**                | Basic MCP client for testing interactions                |
 | 🔄 **basic-agent-2-agent**            | Sample using Agent-to-Agent (A2A) communication protocol |
 | 🗺️ **basic-multi-agent-system**       | Simple multi-agent architecture using LangGraph          |
+| 🗺️ **basic-peft**  | A basic example of Parameter-Efficient Fine-Tuning (PEFT) technique |
 
 ## 🎯 Motivation
 
