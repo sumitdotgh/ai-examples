@@ -1,6 +1,4 @@
-![Main Build](https://github.com/sumitdotgh/ai-examples/actions/workflows/ci.yml/badge.svg?branch=main)
-
-![Docs Build](https://github.com/sumitdotgh/ai-examples/actions/workflows/deploy.yml/badge.svg?branch=dev)
+![Main Build](https://github.com/sumitdotgh/ai-examples/actions/workflows/ci.yml/badge.svg?branch=main) ![Docs Build](https://github.com/sumitdotgh/ai-examples/actions/workflows/deploy.yml/badge.svg?branch=dev)
 
 # :brain: ai-examples
 
