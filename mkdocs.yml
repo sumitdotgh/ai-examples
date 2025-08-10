@@ -12,6 +12,7 @@ nav:
   - Basic RAG: basic-rag.md
   - FastAPI MCP Server and Client: fastapi-mcp-api-and-client.md   
   - Basic Multi Agent Systems: multi-agent-system.md
+  - Basic PEFT: basic-peft.md
 theme:
   name: material
   custom_dir: overrides

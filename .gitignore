@@ -203,3 +203,5 @@ chroma_store/
 *.keras
 *.pkl
 *.txt
+
+*distilbert-lora-peft-tf*

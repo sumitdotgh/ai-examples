@@ -1,5 +1,4 @@
-![Main Build](https://github.com/sumitdotgh/ai-examples/actions/workflows/ci.yml/badge.svg?branch=main)
-
+![Main Build](https://github.com/sumitdotgh/ai-examples/actions/workflows/ci.yml/badge.svg?branch=main) ![Docs Build](https://github.com/sumitdotgh/ai-examples/actions/workflows/deploy.yml/badge.svg?branch=dev)
 
 # :brain: ai-examples
 
@@ -22,7 +21,7 @@ A curated collection of practical AI and LLM examples using Keras,LangChain,Open
 | 🔌 **test-mcp-client**                | Basic MCP client for testing interactions                |
 | 🔄 **basic-agent-2-agent**            | Sample using Agent-to-Agent (A2A) communication protocol |
 | 🗺️ **basic-multi-agent-system**       | Simple multi-agent architecture using LangGraph          |
-
+| 🗺️ **basic-peft**  | A basic example of Parameter-Efficient Fine-Tuning (PEFT) technique |
 
 ## 🎯 Motivation
 
@@ -34,7 +33,7 @@ Each project here represents a small “aha!” moment — and a belief that the
 
 If any of these examples help you learn something new (or spark your own experiments), this repo has done its job. 🚀
 
-#### 📎 Credits
+### 📎 Credits
 
 > Some images or sample data used in this project were found on the internet and are assumed to be in the public domain or used under fair use for non-commercial purposes.
 
