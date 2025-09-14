@@ -1,8 +1,10 @@
 # 🛡️ Basic LLM Security Guarded Proxy
 
-This project is a **safety gateway** for financial domain queries.  
-It uses **policy-based regex filtering** and **Llama Guard 3 (8B) via Ollama** as a content safety classifier.  
-If a query passes all checks, it is routed to a downstream LLM (e.g., GPT, Claude, or any backend). 
+A simple proxy that shows how enterprises can use **AI to protect AI**  
+by enforcing finance/security policies and AI guardrails (via Llama Guard)  
+before queries reach the LLM.
+
+It uses **policy-based regex filtering** and **Llama Guard 3 (8B) via Ollama** as a content safety classifier. If a query passes all checks, it is routed to a downstream LLM (e.g., GPT, Claude, or any backend).
 
 🚫 Blocks unsafe queries like:
 
@@ -13,7 +15,7 @@ If a query passes all checks, it is routed to a downstream LLM (e.g., GPT, Claud
 ✅ Allows safe financial education queries such as:
 
 - *"Explain compound interest"*  
-- *"What are the benefits of a SIP in mutual funds?"*  
+- *"What are the benefits of a SIP in mutual funds?"* 
 
 ---
 
