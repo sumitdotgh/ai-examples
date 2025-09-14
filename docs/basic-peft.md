@@ -2,6 +2,8 @@
 
 An example of **Parameter-Efficient Fine-Tuning (PEFT)** by adding **LoRA** adapters to a Hugging Face `TFDistilBertForSequenceClassification` model – all in pure `TensorFlow/Keras`.
 
+![Alt text](./images/peft-lora.png)
+
 ## Process followed
 
 1. Took a pretrained DistilBERT model for text classification
@@ -9,7 +11,7 @@ An example of **Parameter-Efficient Fine-Tuning (PEFT)** by adding **LoRA** adap
 1. Injected LoRA adapters into only the last two transformer layers
 1. Fine-tuned on a small custom dataset with string labels
 1. Saved the model, tokenizer, and label map for later inference
-1. Inference the loaded model and perform prediction
+1. Perform inferening using the loaded model
 
 ## Different ways to fine tune
 

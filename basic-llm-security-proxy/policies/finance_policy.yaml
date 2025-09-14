@@ -1,0 +1,12 @@
+blocked_patterns:
+  - regex: "(?i)(password|otp|cvv|pin)"
+    reason: "Sensitive information request (passwords/OTPs are not allowed)."
+
+  - regex: "(?i)(guaranteed returns|risk-free investment)"
+    reason: "Misleading financial claim detected."
+
+  - regex: "(?i)(loan without credit check|instant approval loan)"
+    reason: "Potential predatory lending content."
+
+  - regex: "(?i)(black money|tax evasion|illegal transfer)"
+    reason: "Illegal or fraudulent activity detected."
