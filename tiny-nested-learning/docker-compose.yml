@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  tiny-nested-learning:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tiny-nested-learning
+    working_dir: /app
+    command: poetry run python main.py
+    tty: true

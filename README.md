@@ -23,6 +23,7 @@ A curated collection of practical AI and LLM examples using Keras,LangChain,Open
 | 🗺️ **basic-multi-agent-system**       | Simple multi-agent architecture using LangGraph          |
 | 🗺️ **basic-peft**  | A basic example of Parameter-Efficient Fine-Tuning (PEFT) technique |
 | 🛡️ **basic-llm-security-proxy**  | A basic proxy that guardrails queries reach the LLM. |
+| 🛡️ **tiny-nested-learning**  | A tiny experiment on Google's nested learning concept. |
 
 ## 🎯 Motivation
 

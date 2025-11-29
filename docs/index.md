@@ -10,6 +10,7 @@ A curated collection of practical AI and LLM examples using Keras,LangChain,Open
 | 🔁 **basic-rnn**                      | Simple RNN model to predict next word                    |
 | 🔤 **tiny-gpt-model**                 | Tiny GPT model for learning Transformer architecture     |
 | 🔤 **tiny-moe-based-model**           | Tiny sample model based on MoE architecture for predicting the next word |
+| 🧩 **tiny-nested-learning**           | Compare a tiny Transformer with a HOPE-style continuum memory model |
 | 🤖 **local-llm**                      | Run local LLM using [Ollama](https://ollama.com)         |
 | 🧮 **basic-agent**                    | Basic calculation agent using LangChain and tool         |
 | 🛰️ **basic-agent-tracing-langsmith**  | Calculation agent with LangSmith tracing enabled         |
