@@ -1,6 +1,20 @@
 # 🧪 Tiny Nested Learning Example
 
-*A hands-on comparison of Transformers vs HOPE (Hierarchical Open-ended Pattern Expansion)*
+*A hands-on comparison of Transformers vs HOPE*
+
+> ## 📝 **Note**
+
+> **HOPE is not an acronym.**  
+> It is the name of a recurrent architecture introduced by Google’s Nested Learning research.
+>
+> HOPE models use a **Continuum Memory System (CMS)** composed of **fast**, **medium**, and **slow** memory tracks.  
+> Each track updates at a different timescale, allowing the model to learn new information while preserving long-term stability.
+>
+> This structure helps HOPE **reduce catastrophic forgetting** compared to architectures that rely on a single shared state  
+> (such as Transformers or standard RNNs).
+>
+> The name **“HOPE”** reflects the goal of achieving *hopeful, continual learning* —  
+> retaining older knowledge while integrating new tasks.
 
 This project is a compact, intuitive demonstration of **continual learning** — how a machine learning model behaves when it learns **Task A** and then **Task B**, and whether it **forgets** what it learned earlier.
 
