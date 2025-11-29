@@ -1,0 +1,1042 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../tiny-moe-based-model/">
+      
+      
+        <link rel="next" href="../local-llm/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Tiny Nested Learning - AI Examples</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tiny-nested-learning-example" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI Examples" class="md-header__button md-logo" aria-label="AI Examples" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Examples
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tiny Nested Learning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI Examples" class="md-nav__button md-logo" aria-label="AI Examples" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI Examples
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic-cnn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic CNN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic-rnn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic RNN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tiny-gpt-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tiny GPT model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tiny-moe-based-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tiny MoE model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tiny Nested Learning
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tiny Nested Learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 Note
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../local-llm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Local LLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic-agent-with-langsmith/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Agent Tracing Langsmith
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic-agent-2-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Agent 2 Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fastapi-mcp-api-and-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FastAPI MCP Server and Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multi-agent-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Multi Agent Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic-peft/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic PEFT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic-llm-security-proxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic LLM Security Security Proxy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 Note
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tiny-nested-learning-example">🧪 Tiny Nested Learning Example</h1>
+<p><em>A hands-on comparison of Transformers vs HOPE</em></p>
+<blockquote>
+<h2 id="note">📝 <strong>Note</strong></h2>
+<p><strong>HOPE is not an acronym.</strong><br />
+It is the name of a recurrent architecture introduced by Google’s Nested Learning research.</p>
+<p>HOPE models use a <strong>Continuum Memory System (CMS)</strong> composed of <strong>fast</strong>, <strong>medium</strong>, and <strong>slow</strong> memory tracks.<br />
+Each track updates at a different timescale, allowing the model to learn new information while preserving long-term stability.</p>
+<p>This structure helps HOPE <strong>reduce catastrophic forgetting</strong> compared to architectures that rely on a single shared state<br />
+(such as Transformers or standard RNNs).</p>
+<p>The name <strong>“HOPE”</strong> reflects the goal of achieving <em>hopeful, continual learning</em> —<br />
+retaining older knowledge while integrating new tasks.</p>
+</blockquote>
+<p>This project is a compact, intuitive demonstration of <strong>continual learning</strong> — how a machine learning model behaves when it learns <strong>Task A</strong> and then <strong>Task B</strong>, and whether it <strong>forgets</strong> what it learned earlier.</p>
+<p>It implements a simplified version of ideas from Google’s <strong>Nested Learning</strong> research and compares:</p>
+<ul>
+<li>a <strong>tiny Transformer encoder</strong> (baseline attention-only learner)  </li>
+<li>a <strong>tiny HOPE-inspired recurrent model</strong> using a <strong>continuum memory system (CMS)</strong> with <strong>fast</strong>, <strong>medium</strong>, and <strong>slow</strong> update timescales  </li>
+</ul>
+<p>Both models are trained on two tiny natural-language tasks:</p>
+<ul>
+<li><strong>Task 0 — Catch a train</strong>  </li>
+<li><strong>Task 1 — Catch a flight</strong></li>
+</ul>
+<p>By observing how much each model <strong>remembers Task 0</strong> after learning Task 1, we get a clear, human-readable demonstration of <strong>catastrophic forgetting</strong> and how multi-timescale memory can mitigate it.</p>
+<hr />
+<h1 id="setup">🚀 Setup</h1>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>tiny-nested-learning
+docker<span class="w"> </span>compose<span class="w"> </span>build<span class="w"> </span>--no-cache
+docker<span class="w"> </span>compose<span class="w"> </span>up
+</code></pre></div>
+<hr />
+<h1 id="what-the-script-does">🎯 What the Script Does</h1>
+<ol>
+<li><strong>Builds two tiny text tasks</strong> from short English stories.  </li>
+<li><strong>Trains the Transformer</strong> on Task 0 → Task 1.  </li>
+<li><strong>Trains the HOPE model</strong> on the same sequence.  </li>
+<li><strong>Prints color-coded retention tables</strong> to show forgetting vs. retention.</li>
+</ol>
+<hr />
+<h1 id="the-two-tiny-tasks">📘 The Two Tiny Tasks</h1>
+<h3 id="task-0-catch-a-train"><strong>Task 0 — Catch a Train</strong></h3>
+<div class="highlight"><pre><span></span><code>i walk to the station with my ticket
+i wait on the platform for the blue train
+i find my seat and watch trees go by
+</code></pre></div>
+<h3 id="task-1-catch-a-flight"><strong>Task 1 — Catch a Flight</strong></h3>
+<div class="highlight"><pre><span></span><code>i take a cab to the busy airport
+i wait in a long line at the gate
+i find my seat and watch clouds go by
+</code></pre></div>
+<hr />
+<h1 id="architecture-overview-with-mermaid-visuals">🧠 Architecture Overview (with Mermaid Visuals)</h1>
+<h2 id="transformer-one-shared-memory-system">🔵 Transformer — One Shared Memory System</h2>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Transformer
+        T0[Token IDs] --&gt; TE[Embedding Layer]
+        TE --&gt; MH[Multi-Head Attention]
+        MH --&gt; LN1[LayerNorm + Residual]
+        LN1 --&gt; FFN[Feed Forward Network]
+        FFN --&gt; LN2[LayerNorm + Residual]
+        LN2 --&gt; LOGITS[Token Logits]
+    end</code></pre>
+<hr />
+<h2 id="hope-multi-timescale-memory-fast-medium-slow">🟢 HOPE — Multi-Timescale Memory (Fast / Medium / Slow)</h2>
+<pre class="mermaid"><code>flowchart LR
+    subgraph HOPE
+        T0[Token IDs] --&gt; EMB[Embedding Layer]
+        EMB --&gt; CMS[CMS Cell&lt;br/&gt;Controller + Rate Adapter]
+
+        CMS --&gt; F[Fast Memory&lt;br/&gt;Update ~ 0.6]
+        CMS --&gt; M[Medium Memory&lt;br/&gt;Update ~ 0.3]
+        CMS --&gt; S[Slow Memory&lt;br/&gt;Update ~ 0.02]
+
+        F &amp; M &amp; S --&gt; AGG[Aggregated State]
+        AGG --&gt; LOGITS[Token Logits]
+    end</code></pre>
+<hr />
+<h1 id="hope-memory-update-sequence-diagram">🧠 HOPE Memory Update — Sequence Diagram</h1>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+
+    participant X as Input Token&lt;br/&gt;x_t
+    participant C as Controller
+    participant R as Rate Adapter
+    participant F as Fast Memory
+    participant M as Medium Memory
+    participant S as Slow Memory
+    participant A as Aggregator
+    participant O as Output Logits
+
+    X-&gt;&gt;C: Token embedding
+    C-&gt;&gt;C: Compute candidate&lt;br/&gt;state h_candidate
+
+    C-&gt;&gt;R: Send candidate for&lt;br/&gt;rate computation
+    R-&gt;&gt;F: α_fast
+    R-&gt;&gt;M: α_med
+    R-&gt;&gt;S: α_slow
+
+    Note over F: Update rule:&lt;br/&gt;(1 - α_fast)*old&lt;br/&gt; + α_fast*h_candidate
+    Note over M: Update rule:&lt;br/&gt;(1 - α_med)*old&lt;br/&gt; + α_med*h_candidate
+    Note over S: Update rule:&lt;br/&gt;(1 - α_slow)*old&lt;br/&gt; + α_slow*h_candidate
+
+    F-&gt;&gt;A: Updated fast memory
+    M-&gt;&gt;A: Updated med memory
+    S-&gt;&gt;A: Updated slow memory
+
+    A-&gt;&gt;A: Combine memories&lt;br/&gt;h_combined
+    A-&gt;&gt;O: Produce logits&lt;br/&gt;next-word prediction</code></pre>
+<hr />
+<h1 id="example-results-including-real-output">🏆 Example Results — Including REAL Output</h1>
+<div class="highlight"><pre><span></span><code>==================== TRAINING TINY_HOPE ====================
+Epochs per task: 3, Batch size: 64
+
+📘 Training tiny_hope
+→ Starting Task_0
+✓ Finished Task_0
+Evaluating retention after Task_0...
+
+📘 Training tiny_hope
+→ Starting Task_1
+✓ Finished Task_1
+Evaluating retention after Task_1...
+✓ Completed all tasks for tiny_hope
+</code></pre></div>
+<hr />
+<h1 id="transformer-retention-table">📊 Transformer Retention Table</h1>
+<div class="highlight"><pre><span></span><code>==================== TRANSFORMER RETENTION ====================
+Evaluation Task | After Task_0 | After Task_1 | Forgetting
+---------------------------------------------------------------------------
+Task_0         |      0.975 |      0.800 |   -0.175
+Task_1         |      0.525 |      1.000 |    0.475
+===========================================================================
+</code></pre></div>
+<hr />
+<h1 id="hope-retention-table">📊 HOPE Retention Table</h1>
+<div class="highlight"><pre><span></span><code>==================== HOPE RETENTION ====================
+Evaluation Task | After Task_0 | After Task_1 | Forgetting
+---------------------------------------------------------------------------
+Task_0         |      0.575 |      0.700 |    0.125
+Task_1         |      0.325 |      0.625 |    0.300
+===========================================================================
+</code></pre></div>
+<hr />
+<h1 id="continual-learning-summary">⭐ Continual Learning Summary</h1>
+<div class="highlight"><pre><span></span><code>Transformer forget: -0.175
+HOPE forget:        0.125
+
+👉 HOPE retained more memory (less forgetting).
+</code></pre></div>
+<hr />
+<h1 id="educational-explanation-understanding-the-results">📘 Educational Explanation: Understanding the Results</h1>
+<p><strong>Catastrophic forgetting</strong> occurs when a model learns Task 1 and overwrites what it learned in Task 0.</p>
+<p>Final accuracy alone is misleading.<br />
+The correct metric in continual learning is:</p>
+<div class="highlight"><pre><span></span><code>FORGETTING = Final Accuracy – Start Accuracy
+</code></pre></div>
+<p>A model with <strong>lower forgetting</strong> (closer to zero or positive) is the better continual learner.</p>
+<h3 id="in-this-experiment">In this experiment:</h3>
+<ul>
+<li>The <strong>Transformer</strong> forgot <strong>17.5%</strong> of Task_0.</li>
+<li><strong>HOPE actually improved</strong> on Task_0 by <strong>12.5%</strong>, meaning <strong>zero catastrophic forgetting</strong>.</li>
+</ul>
+<p>This happens because HOPE uses <strong>multi-timescale memory</strong>:</p>
+<ul>
+<li>Fast memory → adapts quickly  </li>
+<li>Medium memory → blends  </li>
+<li>Slow memory → preserves long-term knowledge  </li>
+</ul>
+<p>This mirrors Google's Nested Learning idea:</p>
+<blockquote>
+<p>Learning at multiple speeds protects older knowledge while adapting to new tasks.</p>
+</blockquote>
+<h3 id="key-takeaway">✔ Key Takeaway</h3>
+<div class="highlight"><pre><span></span><code>The better continual learner is the one that FORGETS LESS.
+</code></pre></div>
+<p>HOPE wins this experiment.</p>
+<hr />
+<hr />
+<h1 id="why-hope-works-better-here">🔍 Why HOPE Works Better Here</h1>
+<ul>
+<li><strong>Slow memory</strong> barely changes → protects Task 0  </li>
+<li><strong>Fast memory</strong> absorbs Task 1 quickly → lower interference  </li>
+<li><strong>Medium memory</strong> blends both patterns  </li>
+<li>Transformer updates <strong>one shared weight space</strong>, overwriting earlier information  </li>
+</ul>
+<p>HOPE demonstrates how <strong>multi-timescale memory</strong> can significantly reduce catastrophic forgetting.</p>
+<hr />
+<h1 id="disclaimer-hope-can-also-forget-more">⚠️ Disclaimer — HOPE Can Also Forget More</h1>
+<p>To be scientifically honest:</p>
+<p>HOPE <em>can</em> forget more than a Transformer if:</p>
+<ul>
+<li>fast memory rate is too high  </li>
+<li>slow memory is not slow enough  </li>
+<li>tasks are extremely different  </li>
+<li>the model is very tiny  </li>
+<li>training runs too long  </li>
+</ul>
+<p>Example bad setting:</p>
+<div class="highlight"><pre><span></span><code>fast = 0.95
+medium = 0.50
+slow = 0.10
+</code></pre></div>
+<p>Produces retention like:</p>
+<div class="highlight"><pre><span></span><code>Transformer retains: 0.82
+HOPE retains:        0.40
+</code></pre></div>
+<p>This demonstrates:</p>
+<blockquote>
+<p>Multi‑timescale memory is powerful <strong>only when tuned properly</strong>.</p>
+</blockquote>
+<hr />
+<h1 id="customize-explore">🔧 Customize &amp; Explore</h1>
+<p>Try:</p>
+<ul>
+<li>Adjusting HOPE update rates  </li>
+<li>Adding more tasks (Bus → Flight → Metro → Boat)  </li>
+<li>Increasing vocabulary size  </li>
+<li>Changing Transformer depth  </li>
+<li>Lowering Task 1 epochs to reduce destructive updates  </li>
+</ul>
+<hr />
+<h1 id="rnn-vs-transformer-vs-hope-quick-comparison">📘 RNN vs Transformer vs HOPE (Quick Comparison)</h1>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Memory Type</th>
+<th>Strengths</th>
+<th>Weaknesses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RNN</strong></td>
+<td>One hidden state</td>
+<td>Simple, sequential</td>
+<td>Severe forgetting</td>
+</tr>
+<tr>
+<td><strong>Transformer</strong></td>
+<td>Shared parameter memory</td>
+<td>Strong modeling power</td>
+<td>High forgetting when fine-tuned</td>
+</tr>
+<tr>
+<td><strong>HOPE</strong></td>
+<td>Fast + Medium + Slow</td>
+<td>Protects old tasks via slow memory</td>
+<td>Needs tuning</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="why-nested-learning">🧠 Why “Nested Learning”?</h1>
+<p>Traditional models update <strong>one memory system</strong>.</p>
+<p>Nested Learning updates <strong>multiple memory systems</strong> <em>simultaneously</em>, each at a different speed:</p>
+<ul>
+<li><strong>Fast</strong> → immediate adaptation  </li>
+<li><strong>Medium</strong> → short‑term consolidation  </li>
+<li><strong>Slow</strong> → long‑term stability  </li>
+</ul>
+<p>HOPE is a small but functional example of this idea.</p>
+<hr />
+<h1 id="final-notes">🎉 Final Notes</h1>
+<p>This project is deliberately tiny — small enough to understand deeply, but powerful enough to illustrate the most important concepts in continual learning:</p>
+<ul>
+<li>Catastrophic forgetting  </li>
+<li>Multi-timescale memory  </li>
+<li>Nested Learning  </li>
+<li>Transformer vs HOPE behavior  </li>
+</ul>
+<p>Use it as a learning tool, demo, or foundation for larger experiments.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../js/init-mermaid.js"></script>
+      
+    
+  </body>
+</html>
