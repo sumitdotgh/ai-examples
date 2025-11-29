@@ -74,29 +74,36 @@ def sentence_to_arrays(sentence: str, vocab: Dict[str, int], seq_len: int):
     return inputs, targets
 
 
-def make_text_task(name, sentences, vocab, seq_len, repeats_per_sentence=128):
+def make_text_task(name, sentences, vocab, seq_len, repeats_per_sentence=32):
     inputs, targets = [], []
+    print(f"{C.BLUE}📄 Building dataset for {name}...{C.RESET}")
+
     for sentence in sentences:
+        print(f"   • {C.CYAN}{sentence}{C.RESET}")
         x, y = sentence_to_arrays(sentence, vocab, seq_len)
         for _ in range(repeats_per_sentence):
             inputs.append(x)
             targets.append(y)
 
-    return TaskData(
-        name=name,
-        inputs=np.stack(inputs, axis=0),
-        targets=np.stack(targets, axis=0),
-    )
+    print(f"   {C.GREEN}✓ Completed dataset for {name} (size={len(inputs)}){C.RESET}")
+    return TaskData(name=name, inputs=np.stack(inputs), targets=np.stack(targets))
 
 
 def create_curriculum(curriculum):
+    print(f"\n{C.BOLD}{C.HEADER}==================== BUILDING CURRICULUM ===================={C.RESET}")
+
     vocab = build_vocab(curriculum)
+    print(f"{C.YELLOW}Vocabulary Size: {len(vocab)} tokens{C.RESET}")
+
     max_tokens = max(len(s.split()) for lst in curriculum.values() for s in lst) + 1
+    print(f"{C.YELLOW}Max Sequence Length: {max_tokens}{C.RESET}\n")
 
     tasks = [
         make_text_task(name, sentences, vocab, seq_len=max_tokens)
         for name, sentences in curriculum.items()
     ]
+
+    print(f"{C.GREEN}✓ Curriculum Ready\n{C.RESET}")
     return tasks, vocab, max_tokens
 
 
@@ -113,23 +120,27 @@ def as_dataset(task: TaskData, batch_size: int):
 def continual_train(model, tasks, *, epochs, batch_size):
     history = {}
 
+    print(f"\n{C.BOLD}{C.BLUE}==================== TRAINING {model.name.upper()} ===================={C.RESET}")
+    print(f"{C.CYAN}Epochs per task: {epochs}, Batch size: {batch_size}{C.RESET}")
+
     for task in tasks:
         print(f"\n{C.BOLD}{C.BLUE}📘 Training {model.name}{C.RESET}")
-        print(f"   {C.CYAN}→ Starting {task.name}{C.RESET}")
+        print(f"{C.CYAN}→ Starting {task.name}{C.RESET}")
 
         model.fit(as_dataset(task, batch_size=batch_size), epochs=epochs, verbose=0)
 
-        print(f"   {C.GREEN}✓ Finished {task.name}{C.RESET}\n")
+        print(f"{C.GREEN}✓ Finished {task.name}{C.RESET}")
+        print(f"{C.YELLOW}Evaluating retention after {task.name}...{C.RESET}")
 
         checkpoint_metrics = {}
         for eval_task in tasks:
-            ds = tf.data.Dataset.from_tensor_slices((eval_task.inputs, eval_task.targets))
-            ds = ds.batch(batch_size)
+            ds = tf.data.Dataset.from_tensor_slices((eval_task.inputs, eval_task.targets)).batch(batch_size)
             loss, acc = model.evaluate(ds, verbose=0)
             checkpoint_metrics[eval_task.name] = float(acc)
 
         history[task.name] = checkpoint_metrics
 
+    print(f"{C.GREEN}✓ Completed all tasks for {model.name}\n{C.RESET}")
     return history
 
 
@@ -141,14 +152,9 @@ def print_history(name: str, history: Dict[str, Dict[str, float]]):
     tasks = list(history.keys())
     eval_tasks = list(history[tasks[0]].keys())
 
-    print(f"\n{C.BOLD}{C.BLUE}==================== {name} Retention ===================={C.RESET}")
-    print(
-        f"{C.CYAN}Evaluation Task | "
-        + " | ".join([f"After {t}" for t in tasks])
-        + " | Forgetting"
-        + C.RESET
-    )
-    print(C.YELLOW + "-" * 70 + C.RESET)
+    print(f"\n{C.BOLD}{C.BLUE}==================== {name.upper()} RETENTION ===================={C.RESET}")
+    print(f"{C.CYAN}Evaluation Task | After " + " | After ".join(tasks) + " | Forgetting" + C.RESET)
+    print(C.YELLOW + "-" * 75 + C.RESET)
 
     for eval_task in eval_tasks:
         scores = [history[t][eval_task] for t in tasks]
@@ -162,7 +168,7 @@ def print_history(name: str, history: Dict[str, Dict[str, float]]):
         )
         print(row)
 
-    print(C.BLUE + "=" * 70 + C.RESET)
+    print(C.BLUE + "=" * 75 + C.RESET)
 
 
 # ==========================================================
@@ -170,37 +176,32 @@ def print_history(name: str, history: Dict[str, Dict[str, float]]):
 # ==========================================================
 
 def summarize(hist_a, hist_b):
+    print(f"\n{C.BOLD}{C.HEADER}==================== CONTINUAL LEARNING SUMMARY ===================={C.RESET}")
+
     first_task = list(hist_a.keys())[0]
     final_task = list(hist_a.keys())[-1]
 
     transf_start = hist_a[first_task][first_task]
     transf_final = hist_a[final_task][first_task]
+
     hope_start = hist_b[first_task][first_task]
     hope_final = hist_b[final_task][first_task]
 
     t_forget = transf_final - transf_start
     h_forget = hope_final - hope_start
 
-    print(f"\n{C.BOLD}{C.HEADER}📊 Continual Learning Summary{C.RESET}")
-    print(C.YELLOW + "-" * 45 + C.RESET)
-
-    t_color = C.GREEN if t_forget >= 0 else C.RED
-    h_color = C.GREEN if h_forget >= 0 else C.RED
-
-    print(f"- Transformer : {C.CYAN}{transf_final:.3f}{C.RESET}  "
-          f"(forgot {t_color}{t_forget:.3f}{C.RESET})")
-    print(f"- HOPE        : {C.CYAN}{hope_final:.3f}{C.RESET}  "
-          f"(forgot {h_color}{h_forget:.3f}{C.RESET})")
+    print(f"{C.YELLOW}Transformer forget: {C.CYAN}{t_forget:.3f}{C.RESET}")
+    print(f"{C.YELLOW}HOPE forget:        {C.CYAN}{h_forget:.3f}{C.RESET}")
 
     print("\n" + C.YELLOW + "👉 Interpretation:" + C.RESET)
-    if transf_final > hope_final:
-        print(f"{C.GREEN}Transformer retained more memory for this curriculum.{C.RESET}")
-    elif hope_final > transf_final:
-        print(f"{C.GREEN}HOPE retained more memory for this curriculum.{C.RESET}")
+    
+    if abs(h_forget) < abs(t_forget):
+        print(f"{C.GREEN}HOPE retained more memory (less forgetting).{C.RESET}")
     else:
-        print(f"{C.CYAN}Both models retained memory equally.{C.RESET}")
+        print(f"{C.GREEN}Transformer retained more memory (less forgetting).{C.RESET}")
 
-    print(C.YELLOW + "-" * 45 + C.RESET)
+    print(C.HEADER + "=" * 75 + C.RESET)
+
 
 
 # ==========================================================
@@ -208,21 +209,29 @@ def summarize(hist_a, hist_b):
 # ==========================================================
 
 def main():
+    print(f"{C.BOLD}{C.HEADER}\n🚀 Starting Tiny Nested Learning Experiment...\n{C.RESET}")
+
     np.random.seed(7)
     tf.random.set_seed(7)
 
     tasks, vocab, seq_len = create_curriculum(TEXT_CURRICULUM)
     vocab_size = len(vocab)
 
+    print(f"{C.BLUE}Building Models...{C.RESET}")
     transformer = build_tiny_transformer(vocab_size, seq_len)
     hope = build_tiny_hope(vocab_size, seq_len)
+    print(f"{C.GREEN}✓ Models Ready\n{C.RESET}")
 
+    print(f"{C.BLUE}Beginning Training...\n{C.RESET}")
     transformer_history = continual_train(transformer, tasks, epochs=5, batch_size=64)
-    hope_history = continual_train(hope, tasks, epochs=5, batch_size=64)
+    hope_history = continual_train(hope, tasks, epochs=3, batch_size=64)
 
     print_history("Transformer", transformer_history)
     print_history("HOPE", hope_history)
+
     summarize(transformer_history, hope_history)
+
+    print(f"\n{C.BOLD}{C.GREEN}🎉 Experiment Completed Successfully!{C.RESET}")
 
 
 if __name__ == "__main__":
