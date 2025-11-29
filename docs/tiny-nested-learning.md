@@ -1,4 +1,5 @@
-# 🌱 Tiny Nested Learning Playground  
+# 🧪 Tiny Nested Learning Example
+
 *A hands-on comparison of Transformers vs HOPE (Hierarchical Open-ended Pattern Expansion)*
 
 This project is a compact, intuitive demonstration of **continual learning** — how a machine learning model behaves when it learns **Task A** and then **Task B**, and whether it **forgets** what it learned earlier.
