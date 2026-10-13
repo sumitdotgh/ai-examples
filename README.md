@@ -25,6 +25,19 @@ A curated collection of practical AI and LLM examples using Keras,LangChain,Open
 | 🛡️ **basic-llm-security-proxy**  | A basic proxy that guardrails queries reach the LLM. |
 | 🛡️ **tiny-nested-learning**  | A tiny experiment on Google's nested learning concept. |
 
+## 📚 Project Setup Guide
+
+New to this repository? Start here! 
+
+The [**skills/PROJECT-SETUP-GUIDE.md**](skills/PROJECT-SETUP-GUIDE.md) provides a comprehensive guide for setting up new AI/ML projects, including:
+
+- 📝 Project structure templates for ML, LangChain, RAG, and FastAPI projects
+- ⚙️ Configuration file templates (`pyproject.toml`, `.env`, `.gitignore`)
+- 💻 Code structure patterns and best practices
+- 🚀 Quick start commands and troubleshooting tips
+
+Whether you're building a neural network, an AI agent, or an API service, this guide has the patterns you need to get started quickly.
+
 ## 🎯 Motivation
 
 This repository began as a personal learning journey — a place to experiment, break, fix, and deeply understand the core building blocks of AI and modern software systems.
